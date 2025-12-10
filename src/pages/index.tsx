@@ -63,7 +63,10 @@ import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import BookChat from '../components/BookChat';
-import '../css/home.css'; // hero + features + chat CSS
+import '../css/home.css';
+import '../css/chat.css';
+import '../css/modules.css';
+import '../css/custom.css';
 
 export default function Home() {
   return (

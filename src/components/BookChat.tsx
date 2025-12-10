@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../css/chat.css'; // Correct path
+import '../css/home.css';
+import '../css/modules.css';
+import '../css/custom.css';
 
 const GENERAL_ANSWERS: Record<string, string> = {
   hi: 'Hello! How can I assist you with the book? 💬',

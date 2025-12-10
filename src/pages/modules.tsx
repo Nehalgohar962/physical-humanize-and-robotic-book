@@ -62,6 +62,9 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import '../css/modules.css';
+import '../css/home.css';
+import '../css/chat.css';
+import '../css/custom.css';
 
 export default function Modules() {
   return (
