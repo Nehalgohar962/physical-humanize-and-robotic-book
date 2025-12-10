@@ -9,8 +9,8 @@ const config: Config = {
 
   future: { v4: true },
 
-  url: '/', 
-  baseUrl: '/', 
+  url: 'https://hackathon-physical-ai-humanoid-text-sigma.vercel.app', 
+  baseUrl: 'https://hackathon-physical-ai-humanoid-text-sigma.vercel.app/', 
 
   organizationName: 'Nehal Gohar',
   projectName: 'physical-humanize-and-robotic-book',
