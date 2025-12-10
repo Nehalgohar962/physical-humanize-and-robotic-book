@@ -9,8 +9,8 @@ const config: Config = {
 
   future: { v4: true },
 
-  url: "/", 
-  baseUrl: "/", 
+  url: '/', 
+  baseUrl: '/', 
 
   organizationName: 'Nehal Gohar',
   projectName: 'physical-humanize-and-robotic-book',
