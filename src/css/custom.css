@@ -1,0 +1,127 @@
+/* ---------- GLOBAL PREMIUM THEME ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --ifm-font-family-base: 'Inter', sans-serif;
+  --ifm-font-family-monospace: 'Poppins', sans-serif;
+
+  /* PRIMARY COLOR — GREEN TEAL */
+  --ifm-color-primary: #22705f;
+  --ifm-color-primary-dark: #2f7766;
+  --ifm-color-primary-darker: #197a6b;
+  --ifm-color-primary-light: #0becbf;
+  --ifm-color-primary-lighter: #146154;
+  --ifm-color-primary-lightest: #59b4a3;
+
+  --ifm-heading-color: #1a1a1a;
+  --ifm-color-content: #333;
+  --ifm-background-color: #fafafa;
+
+  --ifm-button-border-radius: 10px;
+
+  --shadow-soft: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-medium: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+/* ---------- DARK MODE ---------- */
+[data-theme='dark'] {
+  --ifm-background-color: #0f0f10;
+  --ifm-heading-color: #fff;
+  --ifm-color-content: #dcdcdc;
+
+  --shadow-soft: 0 4px 20px rgba(255,255,255,0.1);
+  --shadow-medium: 0 8px 30px rgba(255,255,255,0.15);
+
+  /* DARK MODE PRIMARY GREEN TEAL */
+  --ifm-color-primary: #25c2a0;
+}
+
+/* ---------- HEADINGS ---------- */
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* ---------- PARAGRAPHS ---------- */
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-top: 0.8rem;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(15px);
+}
+
+/* Navbar logo round */
+.navbar__brand img {
+  border-radius: 50%;   
+  width: 50px;          
+  height: 38px;         
+  object-fit: cover;    
+}
+
+/* ---------- CONTAINER PADDING ---------- */
+.container {
+  padding-top: 1rem !important;
+}
+
+/* ---------- CARDS FOR MODULES ---------- */
+.card {
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.25s ease;
+  border: none;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* ---------- CODE BLOCKS ---------- */
+.codeBlockWrapper {
+  border-radius: 10px !important;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- LINKS ---------- */
+a {
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+a:hover {
+  color: var(--ifm-color-primary-lightest);
+}
+
+/* ---------- BUTTONS ---------- */
+.button {
+  border-radius: 12px !important;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  box-shadow: var(--shadow-soft);
+
+  /* BUTTON PRIMARY GREEN */
+  background: linear-gradient(90deg, #25c2a0, #2e8555);
+  color: #fff;
+  border: none;
+}
+
+.button:hover {
+  box-shadow: var(--shadow-medium);
+  background: linear-gradient(90deg, #2e8555, #25c2a0);
+}

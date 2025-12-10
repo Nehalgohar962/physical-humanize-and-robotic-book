@@ -1,0 +1,146 @@
+/* chat.css */
+
+/* Container for chat button + box */
+.chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Toggle button (round) */
+.chat-toggle-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #134e38;
+  color: #fff;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.chat-toggle-btn:hover {
+  background-color: #0f3a2a;
+  transform: scale(1.1);
+}
+
+/* Chat box */
+.chat-box {
+  width: 350px;
+  height: 550px; /* Messenger jaisi height */
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Smooth fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Messages container */
+.message {
+  padding: 10px 15px;
+  margin: 8px 10px;
+  border-radius: 15px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+/* User messages - right aligned */
+.user-msg {
+  background-color: #134e38;
+  color: #fff;
+  align-self: flex-end;
+}
+
+/* AI messages - left aligned */
+.ai-msg {
+  background-color: #f1f1f1;
+  color: #333;
+  align-self: flex-start;
+  margin-top: 15px; /* Thoda niche default message */
+  padding: 12px 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ai-msg:hover {
+  transform: translateX(5px);
+  opacity: 0.9;
+}
+
+/* Input container at bottom */
+.chat-input-container {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid #ddd;
+  background-color: #fafafa;
+  margin-top: auto; /* ensure input is always at bottom */
+}
+
+/* Input box */
+.chat-input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  outline: none;
+  color: #333;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  margin-right: 10px;
+  transition: border 0.3s, background 0.3s;
+}
+
+.chat-input:focus {
+  border: 1px solid #134e38;
+  background-color: #fff;
+}
+
+/* Send button */
+.chat-send-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #134e38;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.chat-send-btn:hover {
+  background-color: #0f3a2a;
+  transform: scale(1.1);
+}
+
+/* Scrollable messages */
+.chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+/* Hide toggle button when chat is open */
+.chat-container.open .chat-toggle-btn {
+  display: none;
+}
