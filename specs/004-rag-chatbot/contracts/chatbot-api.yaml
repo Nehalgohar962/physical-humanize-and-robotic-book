@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  version: 1.0.0
+  description: API for the RAG chatbot integrated with the Physical AI & Humanoid Robotics textbook
+
+paths:
+  /api/chat:
+    post:
+      summary: Send a message to the chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Unique identifier for the chat session
+                  example: "session-12345"
+                message:
+                  type: string
+                  description: The user's message/question
+                  example: "Explain how inverse kinematics works in humanoid robots"
+                mode:
+                  type: string
+                  enum: [full_book, context_only]
+                  description: The chat mode to use
+                  default: "full_book"
+                context_text:
+                  type: string
+                  description: Text to use as context in context_only mode
+                  example: "Inverse kinematics is a method used to determine the joint parameters that achieve a desired position of the end-effector..."
+      responses:
+        '200':
+          description: Successful response from the chatbot
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                    description: The chatbot's response
+                    example: "Inverse kinematics in humanoid robots involves calculating the joint angles required to position the end-effector at a desired location..."
+                  session_id:
+                    type: string
+                    description: The session identifier
+                  references:
+                    type: array
+                    items:
+                      type: string
+                    description: References to textbook sections used in the response
+        '400':
+          description: Bad request - invalid input
+        '500':
+          description: Internal server error
+
+  /api/sessions:
+    post:
+      summary: Create a new chat session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: Optional user identifier
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  session_id:
+                    type: string
+                    description: The newly created session identifier
+                    example: "session-12345"
+        '500':
+          description: Internal server error
+
+  /api/sessions/{session_id}:
+    get:
+      summary: Get session details
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  session_id:
+                    type: string
+                    description: The session identifier
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: When the session was created
+                  last_activity_at:
+                    type: string
+                    format: date-time
+                    description: When the session was last active
+        '404':
+          description: Session not found
+        '500':
+          description: Internal server error
