@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.11"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/chat/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/api/session/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/health",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/api/health",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/",
+      "dest": "/api/index.py"
+    }
+  ],
+  "env": {
+    "COHERE_API_KEY": "$COHERE_API_KEY",
+    "GEMINI_API_KEY": "$GEMINI_API_KEY",
+    "LLM_PROVIDER": "$LLM_PROVIDER",
+    "QDRANT_URL": "$QDRANT_URL",
+    "QDRANT_API_KEY": "$QDRANT_API_KEY",
+    "TARGET_URL": "$TARGET_URL",
+    "CHUNK_SIZE": "$CHUNK_SIZE",
+    "CHUNK_OVERLAP": "$CHUNK_OVERLAP",
+    "RATE_LIMIT_DELAY": "$RATE_LIMIT_DELAY",
+    "COHERE_MODEL": "$COHERE_MODEL"
+  }
+}

@@ -57,7 +57,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ sessionId, onSessionChang
 
   const loadSessionMessages = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/session/sessions/${sessionId}/messages`);
+      const response = await fetch(`/api/session/sessions/${sessionId}/messages`);
       if (response.ok) {
         const messageData = await response.json();
         setMessages(messageData.map((msg: any) => ({
@@ -75,7 +75,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ sessionId, onSessionChang
   const createNewSession = async () => {
     try {
       // Try the session router first
-      let response = await fetch('http://127.0.0.1:8000/api/session/sessions', {
+      let response = await fetch('/api/session/sessions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ sessionId, onSessionChang
         }
 
         // Fallback to chat router if session router fails
-        response = await fetch('http://127.0.0.1:8000/api/chat/sessions', {
+        response = await fetch('/api/chat/sessions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -203,7 +203,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ sessionId, onSessionChang
       // FULL DEBUG LOGGING - Log the request payload
       console.log('DEBUG: Request payload:', requestBody);
 
-      const response = await fetch('http://127.0.0.1:8000/api/chat/chat', {
+      const response = await fetch('/api/chat/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -350,7 +350,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ sessionId, onSessionChang
         const errorMessage: Message = {
           id: Date.now().toString(),
           role: 'assistant',
-          content: 'Error: Unable to connect to the backend server. Please make sure the backend is running on port 8000.\n\nTo start the backend, run: `cd backend && python -m src.main`',
+          content: 'Error: Unable to connect to the backend server. The API service may be temporarily unavailable or experiencing high traffic.',
           timestamp: new Date(),
         };
         setMessages(prev => [...prev, errorMessage]);
