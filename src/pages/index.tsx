@@ -1,47 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import Link from '@docusaurus/Link';
+// src/pages/Home.tsx
+import React, { useState } from 'react';
 import Layout from '@theme/Layout';
-import '../css/home.css'; // Updated CSS file
+import Link from '@docusaurus/Link';
+import BookChat from '../components/BookChat';
+import '../css/home.css';
+import '../css/chat.css';
+import '../css/modules.css';
+import '../css/custom.css';
 
 export default function Home() {
-  const [activeStep, setActiveStep] = useState(0);
-
-  useEffect(() => {
-    // Create an Intersection Observer to track when each text block enters the viewport
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -80% 0px', // Trigger when element is 20% from top, 80% from bottom
-      threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const step = parseInt(entry.target.getAttribute('data-step'));
-          setActiveStep(step);
-        }
-      });
-    }, observerOptions);
-
-    // Observe all text blocks
-    const textBlocks = document.querySelectorAll('.text-block');
-    textBlocks.forEach(block => {
-      observer.observe(block);
-    });
-
-    // Clean up observer on component unmount
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-
   return (
     <Layout
       title="Physical AI & Humanoid Robotics"
       description="A book on the intersection of Physical AI and Humanoid Robotics"
     >
-      {/* HERO SECTION WITH IMAGE BACKGROUND */}
+      {/* HERO SECTION */}
       <header className="hero-banner">
         <div className="hero-content">
           <h1>Physical AI & Humanoid Robotics</h1>
@@ -224,7 +197,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* CHAT BOX FLOATING */}
+      <BookChat />
     </Layout>
   );
 }
-

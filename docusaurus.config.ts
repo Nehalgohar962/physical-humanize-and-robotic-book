@@ -9,8 +9,8 @@ const config: Config = {
 
   future: { v4: true },
 
-  url: 'https://Nehalgohar962.github.io', 
-  baseUrl: '/physical-humanize-and-robotic-book/', 
+  url: 'https://physical-humanize-and-robotic-book-mu.vercel.app/',
+  baseUrl: '/',
 
   organizationName: 'Nehal Gohar',
   projectName: 'physical-humanize-and-robotic-book',
@@ -59,7 +59,6 @@ const config: Config = {
             { label: 'Modules', to: '/docs' },
             { label: 'About', to: '/docs/about' },
             { label: 'Contact', to: '/docs/contact' },
-            { label: 'AI Assistant', to: '/chat' },
           ],
         },
         {
@@ -77,7 +76,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book — Nehal Gohar ♥ All rights reserved.`,
+      copyright: `© ${new Date().getFullYear()} Nehal Gohar ♥ All rights reserved.`,
     },
     prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
   } satisfies Preset.ThemeConfig,

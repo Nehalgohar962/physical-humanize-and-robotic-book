@@ -1,4 +1,4 @@
-<!-- # Physical AI & Humanoid Robotics Textbook with RAG Chatbot
+# Physical AI & Humanoid Robotics Textbook with RAG Chatbot
 
 This project implements an AI-native Retrieval-Augmented Generation (RAG) chatbot for the Physical AI & Humanoid Robotics textbook, integrated directly into a Docusaurus-based documentation site.
 
@@ -161,7 +161,7 @@ Not using SSH:
 GIT_USER=<Your GitHub username> yarn deploy
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch. -->
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
 
 
 
@@ -308,3 +308,58 @@ Physical AI & Humanoid Robotics Project
 ---
 
 > "Building trustworthy AI systems for embodied intelligence." 🤍
+# 🤖 Physical AI & Humanoid Robotics – RAG Chatbot
+
+A **Retrieval-Augmented Generation (RAG) Chatbot** built for the **Physical AI & Humanoid Robotics textbook**, designed to answer **book-based academic questions only** across **six core modules**.
+This project was developed and deployed as part of a **Hackathon submission**, with a focus on reliability, academic integrity, and real-world AI system design.
+
+---
+
+## 🌟 Project Highlights
+
+* 📚 **Strictly Book-Based Answers** (No hallucinations)
+* 🧠 **6 Fully Indexed Academic Modules**
+* 🔍 **Vector Search using Qdrant**
+* 🤖 **RAG Architecture (Search + Generation)**
+* ⚡ **Robust Fallback Handling (API quota safe)**
+* 🎨 **Clean Academic UI (Deep Blue + Cyan Theme)**
+* 🌐 **Deployed on Vercel**
+
+---
+
+## 📦 Modules Covered
+
+1. **The Robotic Nervous System (ROS 2)**
+   Nodes, topics, DDS middleware, real-time communication
+
+2. **The Digital Twin (Gazebo & Unity)**
+   Simulation, physics engines, virtual robot testing
+
+3. **The AI-Robot Brain (NVIDIA Isaac)**
+   GPU acceleration, Isaac Sim, Sim2Real transfer
+
+4. **Vision-Language-Action (VLA)**
+   Multimodal AI for perception, language understanding, and action
+
+5. **Humanoid Robot Development**
+   Mechanical design, locomotion, balance, actuation
+
+6. **Conversational Robotics**
+   Dialogue systems, context tracking, human-robot interaction
+
+---
+
+## 🧠 System Architecture
+
+```text
+User Query
+   ↓
+Frontend (React)
+   ↓
+Backend API (RAG Pipeline)
+   ↓
+Vector Search (Qdrant)
+   ↓
+Relevant Textbook Chunks
+   ↓
+LLM Response (Book-Only)
