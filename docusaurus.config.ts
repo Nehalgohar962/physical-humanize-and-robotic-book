@@ -9,8 +9,8 @@ const config: Config = {
 
   future: { v4: true },
 
-  url: 'https://physical-humanize-and-robotic-book-mu.vercel.app/', 
-  baseUrl: '/', 
+  url: 'https://physical-humanize-and-robotic-book-mu.vercel.app/',
+  baseUrl: '/',
 
   organizationName: 'Nehal Gohar',
   projectName: 'physical-humanize-and-robotic-book',
@@ -45,6 +45,7 @@ const config: Config = {
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Modules' },
         { to: '/docs/about', label: 'About', position: 'left' },
         { to: '/docs/contact', label: 'Contact', position: 'left' },
+        { to: '/chat', label: 'AI Assistant', position: 'right' },
         { href: 'https://github.com/Nehalgohar962/physical-humanize-and-robotic-book', label: 'GitHub', position: 'right' },
         { href: 'https://www.linkedin.com/in/nehal-gohar-654608295/', label: 'LinkedIn', position: 'right' },
       ],
@@ -82,5 +83,3 @@ const config: Config = {
 };
 
 export default config;
-
-
