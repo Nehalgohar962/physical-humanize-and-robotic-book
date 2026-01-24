@@ -2,30 +2,20 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.py",
-      "use": "@vercel/python",
+      "src": "package.json",
+      "use": "@vercel/static-build",
       "config": {
-        "runtime": "python3.11"
+        "distDir": "build"
       }
+    },
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
-    { "src": "/api/chat/(.*)", "dest": "/api/index.py" },
-    { "src": "/api/session/(.*)", "dest": "/api/index.py" },
-    { "src": "/health", "dest": "/api/index.py" },
-    { "src": "/api/health", "dest": "/api/index.py" },
-    { "src": "/", "dest": "/api/index.py" }
-  ],
-  "env": {
-    "COHERE_API_KEY": "1nfcwm41G54cPGDCYXQNEeq4ahaMaGPxmmewMfsM",
-    "GEMINI_API_KEY": "AIzaSyA0SdFBaBcJZNNgfEH08nmzACC5txKbC04",
-    "LLM_PROVIDER": "gemini",
-    "QDRANT_URL": "https://93464b93-75e3-496a-82f8-cba317f9e502.europe-west3-0.gcp.cloud.qdrant.io:6333",
-    "QDRANT_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.dlAz0Bf51c4Hf6tUvZ5HlPGKk1i4MDOib9B76ahkEJ0",
-    "TARGET_URL": "https://httpbin.org/html",
-    "CHUNK_SIZE": "1000",
-    "CHUNK_OVERLAP": "100",
-    "RATE_LIMIT_DELAY": "1.0",
-    "COHERE_MODEL": "embed-multilingual-v2.0"
-  }
+    { "handle": "filesystem" },
+    { "src": "/api/(.*)", "dest": "/api/index.py" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
