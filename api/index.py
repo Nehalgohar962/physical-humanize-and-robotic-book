@@ -8,6 +8,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+# ================= LOGGING =================
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -44,7 +45,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ================= ROUTES =================
+# ================= ROOT (IMPORTANT) =================
+# 👉 THIS IS WHAT VERCEL CALLS AT /api
 @app.get("/")
 def root():
     return {
@@ -54,7 +56,8 @@ def root():
         "llm_provider": settings.llm_provider
     }
 
-@app.post("/api/chat/session")
+# ================= CHAT ROUTES =================
+@app.post("/chat/session")
 def create_session():
     session_id = str(uuid.uuid4())
     session = ChatSession(
@@ -65,12 +68,12 @@ def create_session():
     sessions[session_id] = session
     return session
 
-@app.post("/api/chat")
+@app.post("/chat")
 def chat(session_id: str, message: str):
     if session_id not in sessions:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    # 🔴 SAFE RESPONSE (NO AI CALL YET)
+    # SAFE RESPONSE (NO AI CALL YET)
     reply = f"You said: {message}"
 
     user_msg = Message(
@@ -88,4 +91,8 @@ def chat(session_id: str, message: str):
     )
 
     sessions[session_id].messages.extend([user_msg, bot_msg])
-    return {"reply": reply}
+
+    return {
+        "session_id": session_id,
+        "reply": reply
+    }
