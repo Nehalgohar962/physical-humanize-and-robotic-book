@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
@@ -9,15 +9,15 @@ const config: Config = {
 
   future: { v4: true },
 
-  url: 'https://physical-humanize-and-robotic-book-mu.vercel.app/',
-  baseUrl: '/',
+  url: 'https://physical-humanize-and-robotic-book-drab.vercel.app', // Tumhara Vercel domain
+  baseUrl: '/', // Root deploy
 
   organizationName: 'Nehal Gohar',
   projectName: 'physical-humanize-and-robotic-book',
-  deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   i18n: { defaultLocale: 'en', locales: ['en'] },
 
@@ -26,11 +26,10 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
+          sidebarPath: require.resolve('./sidebars.ts'),
           editUrl: 'https://github.com/Nehalgohar962/physical-humanize-and-robotic-book/tree/main/',
         },
-        // Blog removed completely
-        theme: { customCss: './src/css/custom.css' },
+        theme: { customCss: require.resolve('./src/css/custom.css') }, // Ensure custom CSS loads
       } satisfies Preset.Options,
     ],
   ],
@@ -38,6 +37,7 @@ const config: Config = {
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: { respectPrefersColorScheme: true },
+
     navbar: {
       title: 'Physical AI & Humanoid Robotics',
       logo: { src: 'img/robotics-hero.jpg' },
@@ -50,6 +50,7 @@ const config: Config = {
         { href: 'https://www.linkedin.com/in/nehal-gohar-654608295/', label: 'LinkedIn', position: 'right' },
       ],
     },
+
     footer: {
       style: 'dark',
       links: [
@@ -78,7 +79,11 @@ const config: Config = {
       ],
       copyright: `© ${new Date().getFullYear()} Nehal Gohar ♥ All rights reserved.`,
     },
-    prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
+
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
   } satisfies Preset.ThemeConfig,
 };
 
