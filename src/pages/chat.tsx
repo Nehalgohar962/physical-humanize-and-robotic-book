@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import ChatInterface from '../components/Chatbot/ChatInterface';
-import '../css/chat.css';
+import '../css/custom.css';
 
 const ChatPage: React.FC = () => {
   const [sessionId, setSessionId] = React.useState<string>('');

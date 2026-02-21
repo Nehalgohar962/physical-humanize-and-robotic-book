@@ -3,9 +3,6 @@ import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import BookChat from '../components/BookChat';
-import '../css/home.css';
-import '../css/chat.css';
-import '../css/modules.css';
 import '../css/custom.css';
 
 export default function Home() {
@@ -15,7 +12,7 @@ export default function Home() {
       description="A book on the intersection of Physical AI and Humanoid Robotics"
     >
       {/* HERO SECTION */}
-      <header className="hero-banner">
+      <header className="hero-banner-image">
         <div className="hero-content">
           <h1>Physical AI & Humanoid Robotics</h1>
           <p>A practical guide to the future of intelligent physical machines, focusing on humanoid robotics, AI-powered movement, sensing, control systems, and the technologies shaping next-generation robots.</p>
@@ -36,7 +33,7 @@ export default function Home() {
               <span className="tech-percent">85%</span>
             </div>
             <div className="progress-bar">
-              <div className="progress-fill python-fill" style={{width: '85%', '--target-width': '85%'} as React.CSSProperties}><span>85%</span></div>
+              <div className="progress-fill python-fill" style={{ width: '85%', '--target-width': '85%' } as React.CSSProperties}><span>85%</span></div>
             </div>
           </div>
 
@@ -46,7 +43,7 @@ export default function Home() {
               <span className="tech-percent">75%</span>
             </div>
             <div className="progress-bar">
-              <div className="progress-fill js-ts-fill" style={{width: '75%', '--target-width': '75%'} as React.CSSProperties}><span>75%</span></div>
+              <div className="progress-fill js-ts-fill" style={{ width: '75%', '--target-width': '75%' } as React.CSSProperties}><span>75%</span></div>
             </div>
           </div>
 
@@ -56,7 +53,7 @@ export default function Home() {
               <span className="tech-percent">70%</span>
             </div>
             <div className="progress-bar">
-              <div className="progress-fill ros-fill" style={{width: '70%', '--target-width': '70%'} as React.CSSProperties}><span>70%</span></div>
+              <div className="progress-fill ros-fill" style={{ width: '70%', '--target-width': '70%' } as React.CSSProperties}><span>70%</span></div>
             </div>
           </div>
 
@@ -66,7 +63,7 @@ export default function Home() {
               <span className="tech-percent">80%</span>
             </div>
             <div className="progress-bar">
-              <div className="progress-fill fastapi-fill" style={{width: '80%', '--target-width': '80%'} as React.CSSProperties}><span>80%</span></div>
+              <div className="progress-fill fastapi-fill" style={{ width: '80%', '--target-width': '80%' } as React.CSSProperties}><span>80%</span></div>
             </div>
           </div>
 
@@ -76,7 +73,7 @@ export default function Home() {
               <span className="tech-percent">65%</span>
             </div>
             <div className="progress-bar">
-              <div className="progress-fill qdrant-fill" style={{width: '65%', '--target-width': '65%'} as React.CSSProperties}><span>65%</span></div>
+              <div className="progress-fill qdrant-fill" style={{ width: '65%', '--target-width': '65%' } as React.CSSProperties}><span>65%</span></div>
             </div>
           </div>
 
@@ -86,7 +83,7 @@ export default function Home() {
               <span className="tech-percent">90%</span>
             </div>
             <div className="progress-bar">
-              <div className="progress-fill docusaurus-fill" style={{width: '90%', '--target-width': '90%'} as React.CSSProperties}><span>90%</span></div>
+              <div className="progress-fill docusaurus-fill" style={{ width: '90%', '--target-width': '90%' } as React.CSSProperties}><span>90%</span></div>
             </div>
           </div>
         </div>
@@ -125,32 +122,33 @@ export default function Home() {
       {/* WHO IS THIS BOOK FOR SECTION */}
       <section className="audience-section">
         <div className="audience-container">
-          <div className="audience-text">
-            <h2 className="audience-title">Who Is This Book For?</h2>
-            <div className="audience-cards">
-              <div className="audience-card">
-                <h3>🎓 AI & Robotics Students</h3>
-                <p>Perfect for those studying robotics, AI, and related fields who want practical knowledge of humanoid robot development.</p>
-              </div>
-              <div className="audience-card">
-                <h3>⚙️ Developers & Engineers</h3>
-                <p>Software and hardware engineers looking to build or integrate AI-powered robotic systems.</p>
-              </div>
-              <div className="audience-card">
-                <h3>🔬 Researchers</h3>
-                <p>Academic and industry researchers exploring the frontiers of Physical AI and humanoid robotics.</p>
-              </div>
-              <div className="audience-card">
-                <h3>🚀 Tech & Innovation Enthusiasts</h3>
-                <p>Technology enthusiasts interested in understanding the future of human-robot interaction and AI.</p>
-              </div>
-            </div>
-          </div>
           <div className="audience-image">
             <video autoPlay muted loop playsInline>
               <source src="img/new-section.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+          </div>
+          <div className="audience-text">
+            <h2 className="audience-title">Who Is This Book For?</h2>
+            <div className="audience-cards">
+              <div className="audience-card" data-number="1">
+                <h3>🎓 AI & Robotics Students</h3>
+                <p>Perfect for those studying robotics, AI, and related fields who want practical knowledge of humanoid robot development.</p>
+              </div>
+              <div className="audience-card" data-number="2">
+                <h3>⚙️ Developers & Engineers</h3>
+                <p>Software and hardware engineers looking to build or integrate AI-powered robotic systems.</p>
+              </div>
+              <div className="audience-card" data-number="3">
+                <h3>🔬 Researchers</h3>
+                <p>Academic and industry researchers exploring the frontiers of Physical AI and humanoid robotics.</p>
+              </div>
+              <div className="audience-card" data-number="4">
+                <h3>🚀 Tech & Innovation Enthusiasts</h3>
+                <p>Technology enthusiasts interested in understanding the future of human-robot interaction and AI.</p>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
@@ -193,7 +191,7 @@ export default function Home() {
             <div className="timeline-content">
               <h3>2030s</h3>
               <p>Future Predictions</p>
-              </div>
+            </div>
           </div>
         </div>
       </section>

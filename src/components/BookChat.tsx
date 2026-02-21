@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import '../css/chat.css'; // Correct path
-import '../css/home.css';
-import '../css/modules.css';
 import '../css/custom.css';
 
 const GENERAL_ANSWERS: Record<string, string> = {
@@ -21,59 +18,112 @@ const MODULE_DETAILS: Record<string, string> = {
   'module 6': 'Module 6: Future of Physical AI. Emerging trends, AI integration, and future of humanoid robotics.',
 };
 
+// Get current time in HH:MM format
+const getCurrentTime = () => {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  return `${hours}:${minutes}`;
+};
+
 export default function BookChat() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{ type: 'user' | 'ai'; text: string }[]>([]);
+  const [messages, setMessages] = useState<
+    { type: 'user' | 'ai'; text: string; time: string }[]
+  >([]);
   const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
   const handleSend = () => {
     if (!input.trim()) return;
 
-    const userMsg = { type: 'user', text: input };
-    const lower = input.toLowerCase();
-    const answer = GENERAL_ANSWERS[lower] || MODULE_DETAILS[lower] || 
-                   "Sorry, I can only answer questions related to book modules 1-6.";
-    const aiMsg = { type: 'ai', text: answer };
-
-    setMessages(prev => [...prev, userMsg, aiMsg]);
+    const userMsg = { type: 'user', text: input, time: getCurrentTime() };
+    setMessages(prev => [...prev, userMsg]);
     setInput('');
+    setIsTyping(true);
+
+    // AI response after delay
+    setTimeout(() => {
+      const lower = input.toLowerCase().trim();
+
+      // Check GENERAL_ANSWERS for partial match
+      let answer = Object.keys(GENERAL_ANSWERS).find(key => lower.includes(key));
+      if (answer) {
+        answer = GENERAL_ANSWERS[answer];
+      } else if (MODULE_DETAILS[lower]) {
+        answer = MODULE_DETAILS[lower];
+      } else {
+        answer = `I can answer basic book modules questions. About "${input}", you might want to check ROS2 documentation.`;
+      }
+
+      const aiMsg = { type: 'ai', text: answer, time: getCurrentTime() };
+      setMessages(prev => [...prev, aiMsg]);
+      setIsTyping(false);
+    }, 1200);
+  };
+
+  const handleClear = () => {
+    setMessages([]);
   };
 
   return (
-    <div className={`chat-container ${isOpen ? 'open' : ''}`}>
-      {/* Toggle button */}
+    <div>
+      {/* Floating Chat Button */}
       {!isOpen && (
-        <button className="chat-toggle-btn" onClick={() => setIsOpen(true)}>
+        <button className="chat-floating-button" onClick={() => setIsOpen(true)}>
           💬
         </button>
       )}
 
-      {/* Chat box */}
+      {/* Chat Interface */}
       {isOpen && (
-        <div className="chat-box">
-          {messages.length === 0 && (
-            <div className="ai-msg">💬 Hello! Ask me anything about the book modules 1-6.</div>
-          )}
-          {messages.map((m, idx) => (
-            <div
-              key={idx}
-              className={`message ${m.type === 'user' ? 'user-msg' : 'ai-msg'}`}
-            >
-              {m.text}
+        <div className="chat-interface">
+          <div className="chat-header">
+            <span>Book Assistant</span>
+            <div>
+              <button className="clear-chat-btn" onClick={handleClear}>Clear</button>
+              <button className="chat-close-btn" onClick={() => setIsOpen(false)}>✕</button>
             </div>
-          ))}
+          </div>
 
-          {/* Input */}
-          <div className="chat-input-container">
-            <input
-              type="text"
+          <div className="chat-messages">
+            {messages.length === 0 && (
+              <div className="welcome-message">
+                <div className="welcome-icon">💬</div>
+                Hello! Ask me anything about book modules 1-6.
+              </div>
+            )}
+            {messages.map((msg, idx) => (
+              <div
+                key={idx}
+                className={`message-container ${msg.type === 'user' ? 'user' : 'assistant'}`}
+              >
+                <div className="message-content">{msg.text}</div>
+                <span className="message-timestamp">{msg.time}</span>
+              </div>
+            ))}
+
+            {/* Typing Indicator */}
+            {isTyping && (
+              <div className="typing-indicator">
+                <span>AI is typing</span>
+                <div className="typing-dots">
+                  <span className="typing-dot"></span>
+                  <span className="typing-dot"></span>
+                  <span className="typing-dot"></span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="chat-input-form">
+            <textarea
               placeholder="Type your question here..."
-              className="chat-input"
               value={input}
               onChange={e => setInput(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && handleSend()}
-            />
-            <button className="chat-send-btn" onClick={handleSend}>➤</button>
+              onKeyDown={e => e.key === 'Enter' && !e.shiftKey && handleSend()}
+            ></textarea>
+            <button className="send-button" onClick={handleSend}>➤</button>
           </div>
         </div>
       )}

@@ -36,7 +36,6 @@ const Footer = () => {
               <li className="footer__item"><a href="/docs">Modules</a></li>
               <li className="footer__item"><a href="/docs/about">About</a></li>
               <li className="footer__item"><a href="/docs/contact">Contact</a></li>
-              <li className="footer__item"><a href="/chat">AI Assistant</a></li>
             </ul>
           </div>
 
